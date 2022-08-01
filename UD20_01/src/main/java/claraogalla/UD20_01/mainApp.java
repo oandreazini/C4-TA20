@@ -4,10 +4,10 @@ package claraogalla.UD20_01;
  * Hello world!
  *
  */
-public class App 
+public class mainApp 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+    	GraphicApplication window = new GraphicApplication();
     }
 }
