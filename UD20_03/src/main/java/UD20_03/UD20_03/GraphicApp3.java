@@ -10,7 +10,7 @@ public class GraphicApp3 extends JFrame{
 	private JPanel contentPane;
 
 	public GraphicApp3() {
-		setTitle("UD20_01");
+		setTitle("Ejercicio 3 de la TA20");
 
 		setBounds(700, 400, 500, 150);
 
