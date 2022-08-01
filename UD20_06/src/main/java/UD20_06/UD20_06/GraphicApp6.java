@@ -30,11 +30,11 @@ public class GraphicApp6 extends JFrame{
 
 		setContentPane(contentPane);
 
-		exercise3();
+		exercise6();
 	}
 
 
-	private void exercise3() {
+	private void exercise6() {
 		/* Labels */
 		JLabel heightLabel = new JLabel("Altura (cm):");
 		heightLabel.setBounds(33, 22, 93, 14);
@@ -93,7 +93,7 @@ public class GraphicApp6 extends JFrame{
 					resultLabel.setText(numberFormat.format(result));
 
 				} catch (NumberFormatException e) {
-					JOptionPane.showMessageDialog(null, "ERROR! No rellenaste todos los campos. Porfavor, rellena tanto la altura como el peso en las unidades correctas.");
+					JOptionPane.showMessageDialog(null, "ERROR! No rellenaste todos los campos. Porfavor, rellena tanto la altura como el peso en las unidades correctas.", "VALUE ERROR", 0);
 					System.out.println(e.getMessage());
 				}
 			}
