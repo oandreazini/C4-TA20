@@ -7,7 +7,6 @@ import javax.swing.*;
 
 
 public class GraphicApplication extends JFrame{
-
 	
 	private JPanel contentPane;
 
