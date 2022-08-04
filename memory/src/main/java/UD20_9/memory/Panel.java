@@ -1,24 +1,29 @@
-package UD20_07.memory;
+package UD20_9.memory;
 
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.io.IOException;
 
-public class graphicApp extends JFrame{
+public class Panel extends JFrame{
 	
 	private JPanel contentPane;
 	
 	
 	/**
 	 * Constructor ventana en blanco que llama a los otros elementos
+	 * @throws IOException 
 	 */
-	public graphicApp() {
+	public Panel() throws IOException {
 
 		setTitle("Tic Tac Toe");
 
-		setBounds(700, 700, 552, 627);
+		setBounds(500, 200, 552, 627);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -35,16 +40,20 @@ public class graphicApp extends JFrame{
 	}
 
 
-	private void memoryElements() {
+	private void memoryElements() throws IOException {
 		// TODO Auto-generated method stub
 		
 		/* Labels */
 		JToggleButton tglbtn1 = new JToggleButton("");
 		tglbtn1.setBounds(10, 64, 121, 120);
+		tglbtn1.setIcon(new ImageIcon(getClass().getResource("/icons/0.png")));
+		tglbtn1.setSelectedIcon(new ImageIcon(getClass().getResource("/icons/1.png")));
 		contentPane.add(tglbtn1);
 		
 		JToggleButton tglbtn2 = new JToggleButton("");
 		tglbtn2.setBounds(141, 64, 121, 120);
+		tglbtn2.setIcon(new ImageIcon(getClass().getResource("/icons/0.png")));
+		// TODO
 		contentPane.add(tglbtn2);
 		
 		JToggleButton tglbtn3 = new JToggleButton("");

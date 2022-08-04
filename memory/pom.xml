@@ -2,14 +2,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>UD20_07</groupId>
+  <groupId>UD20_9</groupId>
   <artifactId>memory</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>memory</name>
   <url>http://maven.apache.org</url>
-  
+
   <!-- Propiedades del proyecto UTF-8 y jdk 1.8 -->
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
