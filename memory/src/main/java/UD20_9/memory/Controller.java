@@ -4,36 +4,38 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Vector;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JToggleButton;
 
 public class Controller {
 	
-
-	private static final int GAMEBORAD = 16; //constantes de la cantidad de botones
+	private static final int N_BUTTONS = 16; //constantes de la cantidad de botones
+	
+	private DashBoard window;
+	private JToggleButton[] buttonsArray;
 	private Vector<String>number;
-	private DashBoard[] buttons;
 	private Random rand;
-	private int rad;
-	private int token;
-	private int shift;
-	private int type1;
-	private int type;
-	private int indenti1;
-	private int identi2;
-	private int count;
+	private int tokens;
+	private int random;
 	
 	// Se inicializan los botones y variables
-	public Controller(){
-		token = GAMEBORAD ;
-		buttons = new DashBoard[GAMEBORAD];
-		number = new Vector<String>();
-		rand = new Random();
-		makeRandom();
+	public Controller() throws IOException{
+		
+		window = new DashBoard();
+		
+		//buttonsArray = setButtons(window.getButtons());
+		
+		//tokens = N_BUTTONS ;
+		//number = new Vector<String>();
+		//rand = new Random();
+		//makeRandom();
 	}
+	
 	
 	// LLena el vector "number" con parejas del 1 al 8
 	public void makeRandom() {
-		for(int i=0; i<(GAMEBORAD/2); i++) {
+		for(int i=0; i<8; i++) {
 			number.addElement(String.valueOf(i+1));
 			number.addElement(String.valueOf(i+1));
 		}
@@ -41,20 +43,26 @@ public class Controller {
 	
 	//Devuelve el numero que esta al vector "number" y lo elimina del vector
 	public int randomNumber() {
-		int back;
-		rad = rand.nextInt(token);
-		back = Integer.parseInt(number.elementAt(rad));
-		number.removeElementAt(rad);
-		token-=1;
-		return back;
+		int numBack;
+		random = rand.nextInt(tokens);
+		numBack = Integer.parseInt(number.elementAt(random));
+		number.removeElementAt(random);
+		tokens-=1;
+		return numBack;
 	}
 	
-	// Crea los botones, les asigna el numero random y una id
-	public DashBoard[] createButtons() {
-		for(int i=0; i<GAMEBORAD; i++) {
-			buttons[i] = new DashBoard();
-			buttons[i].setNumero(randomNumber());
-			buttons[]
+	private JToggleButton[] setButtons(JToggleButton[] buttons) {
+		// TODO Auto-generated method stub
+		
+		for(int i=0;i<N_BUTTONS;i++){
+			// Se guarda el numero generado aleatorio del 1 al 16
+			int numImagen = randomNumber();
+			
+			// Se utiliza ese numero para introducir una imagen aleatoria al boton
+			ImageIcon img = new ImageIcon(getClass().getResource("/Imagenes/"+numImagen+".png"));
+			buttons[i].setSelectedIcon(img);
 		}
+		
+		return buttons;
 	}
 }
