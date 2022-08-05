@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.Font;
 
-
 public class GraphicApp4 extends JFrame {
 
 	private JPanel contentPane;
@@ -14,7 +13,7 @@ public class GraphicApp4 extends JFrame {
 	/**
 	 * Panel de aplicacion
 	 */
-	public GraphicApp4 () {
+	public GraphicApp4() {
 
 		// Titulo de la ventana
 		setTitle("Eventos de la ventana");
@@ -43,62 +42,62 @@ public class GraphicApp4 extends JFrame {
 
 	public void interaction() {
 
+		// Crear area de texto
 		textField = new JTextField("");
 		textField.setBounds(91, 41, 572, 296);
 		contentPane.add(textField);
 		textField.setColumns(10);
-		
+
+		// Crear Label
 		lbl_1 = new JLabel("Eventos");
 		lbl_1.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lbl_1.setBounds(10, 180, 71, 15);
 		contentPane.add(lbl_1);
-		
-		// Creamos un listener para la accion de usar el raton en textField
+
+		// Creamos un listener para la accion de la ventana
 		EventsWindow actLis_2 = new EventsWindow();
-		
+
 		addWindowListener(actLis_2);
+	}
+
+	// Creamos una clase para las acciones en la ventana
+	class EventsWindow implements WindowListener {
+
+		// Creamos una metodo para cada accion que tiene la ventana
+
+		public void windowOpened(WindowEvent e) {
+			String text = textField.getText();
+			textField.setText(text + "Ventana activa,  ");
 		}
-	
-		
 
-		// Creamos una clase para las acciones en la ventana
-		class EventsWindow implements WindowListener {
+		public void windowClosing(WindowEvent e) {
+			String text = textField.getText();
+			textField.setText(text + "Se ha cerrado una ventana,  ");
+		}
 
-			// Creamos una metodo para cada accion que tiene la ventana
+		public void windowClosed(WindowEvent e) {
+			String text = textField.getText();
+			textField.setText(text + "Cerrar la ventana,  ");
+		}
 
-			public void windowOpened(WindowEvent e) {
-				String text = textField.getText();
-				textField.setText( text + "Ventana activa,  ");
-			}
+		public void windowIconified(WindowEvent e) {
+			String text = textField.getText();
+			textField.setText(text + "Ventana ya no es la ventana activa,  ");
+		}
 
-			public void windowClosing(WindowEvent e) {
-				String text = textField.getText();
-				textField.setText( text + "Se ha cerrado una ventana,  ");
-			}
+		public void windowDeiconified(WindowEvent e) {
+			String text = textField.getText();
+			textField.setText(text + "Ventana cambia de un estado minimizado a un estado normal,  ");
+		}
 
-			public void windowClosed(WindowEvent e) {
-				String text = textField.getText();
-				textField.setText( text + "Cerrar la ventana,  ");
-			}
+		public void windowActivated(WindowEvent e) {
+			String text = textField.getText();
+			textField.setText(text + "Ventana activada,  ");
+		}
 
-			public void windowIconified(WindowEvent e) {
-				String text = textField.getText();
-				textField.setText( text + "Ventana ya no es la ventana activa,  ");
-			}
-
-			public void windowDeiconified(WindowEvent e) {
-				String text = textField.getText();
-				textField.setText( text + "Ventana cambia de un estado minimizado a un estado normal,  ");
-			}
-
-			public void windowActivated(WindowEvent e) {
-				String text = textField.getText();
-				textField.setText( text + "Ventana activada,  ");
-			}
-
-			public void windowDeactivated(WindowEvent e) {
-				String text = textField.getText();
-				textField.setText( text + "Ventana desactivada,  ");
-			}
-		};		
+		public void windowDeactivated(WindowEvent e) {
+			String text = textField.getText();
+			textField.setText(text + "Ventana desactivada,  ");
+		}
+	};
 }
