@@ -5,12 +5,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JLabel;
+
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.util.Random;
 import javax.swing.SwingConstants;
+
+
+
+import javax.swing.JButton;
 
 public class DashBoard extends JFrame implements MouseListener {
 
@@ -33,6 +39,7 @@ public class DashBoard extends JFrame implements MouseListener {
 	private JToggleButton tglbtn14;
 	private JToggleButton tglbtn15;
 	private JToggleButton tglbtn16;
+	private JButton btnNewGame;
 
 	private JLabel labelNumTry;
 	private JLabel labelTry;
@@ -53,6 +60,7 @@ public class DashBoard extends JFrame implements MouseListener {
 	// Variables para indicar que imagenes se estan mostrando
 	int view1;
 	int view2;
+	int numCouples;
 
 	// Variable que nos va a sumar los puntos
 	int points = 0;
@@ -66,7 +74,7 @@ public class DashBoard extends JFrame implements MouseListener {
 
 		// Se llama a los elementos del memory
 		memoryElements();
-		initArrays();
+		
 
 		setTitle("Memory");
 
@@ -79,8 +87,7 @@ public class DashBoard extends JFrame implements MouseListener {
 		contentPane.setLayout(null);
 
 		setContentPane(contentPane);
-
-		// TODO
+		
 		setResizable(false);
 		setLocationRelativeTo(null);
 	}
@@ -151,7 +158,13 @@ public class DashBoard extends JFrame implements MouseListener {
 		tglbtn16 = new JToggleButton("");
 		tglbtn16.setBounds(403, 457, 121, 120);
 		tglbtn16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
+		
+		btnNewGame = new JButton("Nueva Partida");
+		btnNewGame.setFont(new Font("Arial Black", Font.PLAIN, 18));
+		btnNewGame.setBounds(46, 25, 188, 29);
+		
 
+		
 		/* Etiquetas */
 		labelTry = new JLabel("Puntos:");
 		labelTry.setFont(new Font("Arial Black", Font.PLAIN, 22));
@@ -162,7 +175,7 @@ public class DashBoard extends JFrame implements MouseListener {
 		labelNumTry.setFont(new Font("Arial Black", Font.PLAIN, 22));
 		labelNumTry.setBounds(437, 25, 87, 24);
 
-		/* Paneles */
+		/* Panel */
 
 		contentPane = new JPanel();
 
@@ -185,51 +198,34 @@ public class DashBoard extends JFrame implements MouseListener {
 		contentPane.add(tglbtn14);
 		contentPane.add(tglbtn15);
 		contentPane.add(tglbtn16);
+		
+		contentPane.add(btnNewGame);
 
 		contentPane.add(labelNumTry);
 		contentPane.add(labelTry);
 
-	}
+		/* Action Listeners */
 
-	/** Logica **/
+		btnNewGame.addActionListener(new ActionListener() {
 
-	// Permite inicializar todos los arrays
-
-	private void initArrays() {
-
-		initArrayImages();
-
-		// Inicializamos los arrays
-		loadArray(arrayNumImage);
-		loadArray(arrayControl);
-		loadArray(arrayCouples);
-		loadArray(arrayClick);
-
-		// Genera numeros aleatorios
-		Random r = new Random();
-		int positionImage;
-		for (int i = 0; i < 16; i++) {
-			// La variable positionImage obtendra un valor random entre el 0 y el 7 y se
-			// valida que el numero aleatorio no se repita
-			positionImage = r.nextInt(8);
-			if (arrayControl[positionImage] < 2) {
-				// almacena el valor que representa cada imagen (la imagen se llama con su
-				// numero)
-				arrayNumImage[i] = positionImage + 1;
-				// Almacenamos el valor y augmentamos el valor, para saber que ya existe 1 vez
-				arrayControl[positionImage]++;
-			} else {
-				// se repite la funcion para pedir otro numero
-				i--;
-			}
-		}
-
+			@Override
+			public void actionPerformed(ActionEvent e) {
+//				// TODO Auto-generated method stub
+//				loadArray(arrayNumImage);
+//				initArrayImages();
+//				loadArray(arrayCouples);
+//				loadArray(arrayControl);
+//				loadArray(arrayClick);
+//				labelNumTry.setText("");
+//				
+				}
+		});
 	}
 
 	// Metodo que permite inicializar el array de JToggleButton y asignarle a cada
 	// uno la imagen inicial de incognita
 
-	private void initArrayImages() {
+	public void initArrayImages() {
 		arrayButtonImage[0] = tglbtn1;
 		arrayButtonImage[1] = tglbtn2;
 		arrayButtonImage[2] = tglbtn3;
@@ -253,14 +249,6 @@ public class DashBoard extends JFrame implements MouseListener {
 		}
 	}
 
-	// Inicializa los arrays
-
-	private void loadArray(int[] array) {
-		for (int i = 0; i < array.length; i++) {
-			array[i] = 0;
-		}
-	}
-
 	// Permite validar las parejas comparando las posiciones almacenadas al momento
 	// de mostrar las imagenes
 
@@ -274,6 +262,7 @@ public class DashBoard extends JFrame implements MouseListener {
 			// esas posiciones ya se encontraron parejas
 			points += 10;
 			labelNumTry.setText(points + "");
+			numCouples++;
 			arrayCouples[view1] = 1;
 			arrayCouples[view2] = 1;
 		} else {
@@ -282,7 +271,7 @@ public class DashBoard extends JFrame implements MouseListener {
 			 * reinicia el valor de la posicion en el arreglo que cuenta cuantos clic se han
 			 * dado en cada JJToggleButton y se le restan 10 puntos
 			 */
-			points -= 10;
+			points -= 5;
 			labelNumTry.setText(points + "");
 			arrayButtonImage[view1].setIcon(new ImageIcon(getClass().getResource("/images/quien.jpg")));
 			arrayButtonImage[view2].setIcon(new ImageIcon(getClass().getResource("/images/quien.jpg")));
@@ -290,6 +279,7 @@ public class DashBoard extends JFrame implements MouseListener {
 			arrayClick[view2] = 0;
 		}
 	}
+	
 
 	/** Eventos del Mouse **/
 
@@ -374,5 +364,11 @@ public class DashBoard extends JFrame implements MouseListener {
 	public void mouseEntered(MouseEvent e) {
 
 	}
+	// Inicializa los arrays
 
+		private void loadArray(int[] array) {
+			for (int i = 0; i < array.length; i++) {
+				array[i] = 0;
+			}
+		}
 }
