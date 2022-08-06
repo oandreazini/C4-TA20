@@ -250,7 +250,7 @@ public class DashBoard extends JFrame implements MouseListener {
 			/*
 			 * si no son iguales entonces se vuelve a poner la imagen de incognita y se
 			 * reinicia el valor de la posicion en el arreglo que cuenta cuantos clic se han
-			 * dado en cada JJToggleButton y se le restan 10 puntos
+			 * dado en cada JJToggleButton y se le restan 5 puntos
 			 */
 			points -= 5;
 			labelNumTry.setText(points + "");
