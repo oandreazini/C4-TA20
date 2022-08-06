@@ -11,31 +11,30 @@ import javax.swing.JToggleButton;
 public class Controller {
 	
 	private static final int N_BUTTONS = 16; //constantes de la cantidad de botones
-	
-	private DashBoard window;
+
 	private JToggleButton[] buttonsArray;
 	private Vector<String>number;
 	private Random rand;
 	private int tokens;
 	private int random;
 	
+	DashBoard window = new DashBoard();
+	
 	// Se inicializan los botones y variables
 	public Controller() throws IOException{
+				
+		buttonsArray = new JToggleButton[N_BUTTONS];
 		
-		window = new DashBoard();
-		
-		//buttonsArray = setButtons(window.getButtons());
-		
-		//tokens = N_BUTTONS ;
-		//number = new Vector<String>();
-		//rand = new Random();
-		//makeRandom();
+		tokens = N_BUTTONS ;
+		number = new Vector<String>();
+		rand = new Random();
+		makeRandom();
 	}
 	
 	
 	// LLena el vector "number" con parejas del 1 al 8
 	public void makeRandom() {
-		for(int i=0; i<8; i++) {
+		for(int i=0; i<N_BUTTONS/2; i++) {
 			number.addElement(String.valueOf(i+1));
 			number.addElement(String.valueOf(i+1));
 		}
@@ -51,18 +50,27 @@ public class Controller {
 		return numBack;
 	}
 	
-	private JToggleButton[] setButtons(JToggleButton[] buttons) {
-		// TODO Auto-generated method stub
-		
-		for(int i=0;i<N_BUTTONS;i++){
-			// Se guarda el numero generado aleatorio del 1 al 16
-			int numImagen = randomNumber();
-			
-			// Se utiliza ese numero para introducir una imagen aleatoria al boton
-			ImageIcon img = new ImageIcon(getClass().getResource("/Imagenes/"+numImagen+".png"));
-			buttons[i].setSelectedIcon(img);
-		}
-		
-		return buttons;
-	}
+//	private JToggleButton[] setButtons() {
+//		// TODO Auto-generated method stub
+//		
+//		
+//		for(int i=0;i<N_BUTTONS;i++){
+//			// Se guarda el numero generado aleatorio del 1 al 16
+//			int numImagen = 0;
+//			buttonsArray[i] = new JToggleButton();
+//			buttonsArray[i]= numImagen(randomNumber());
+//			
+//			// Se utiliza ese numero para introducir una imagen aleatoria al boton
+//			ImageIcon img = new ImageIcon(getClass().getResource("/Imagenes/"+numImagen+".png"));
+//			buttonsArray[i].setSelectedIcon(img);
+//		}
+//		
+//		return buttonsArray;
+//	}
+//
+//
+//	private JToggleButton numImagen(int randomNumber) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }
