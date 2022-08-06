@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -159,11 +160,6 @@ public class DashBoard extends JFrame implements MouseListener {
 		tglbtn16.setBounds(403, 457, 121, 120);
 		tglbtn16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 		
-		btnNewGame = new JButton("Nueva Partida");
-		btnNewGame.setFont(new Font("Arial Black", Font.PLAIN, 18));
-		btnNewGame.setBounds(46, 25, 188, 29);
-		
-
 		
 		/* Etiquetas */
 		labelTry = new JLabel("Puntos:");
@@ -198,28 +194,10 @@ public class DashBoard extends JFrame implements MouseListener {
 		contentPane.add(tglbtn14);
 		contentPane.add(tglbtn15);
 		contentPane.add(tglbtn16);
-		
-		contentPane.add(btnNewGame);
 
 		contentPane.add(labelNumTry);
 		contentPane.add(labelTry);
 
-		/* Action Listeners */
-
-		btnNewGame.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-//				// TODO Auto-generated method stub
-//				loadArray(arrayNumImage);
-//				initArrayImages();
-//				loadArray(arrayCouples);
-//				loadArray(arrayControl);
-//				loadArray(arrayClick);
-//				labelNumTry.setText("");
-//				
-				}
-		});
 	}
 
 	// Metodo que permite inicializar el array de JToggleButton y asignarle a cada
@@ -265,6 +243,9 @@ public class DashBoard extends JFrame implements MouseListener {
 			numCouples++;
 			arrayCouples[view1] = 1;
 			arrayCouples[view2] = 1;
+			arrayButtonImage[view1].setVisible(false);
+			arrayButtonImage[view2].setVisible(false);
+			finished();
 		} else {
 			/*
 			 * si no son iguales entonces se vuelve a poner la imagen de incognita y se
@@ -280,7 +261,12 @@ public class DashBoard extends JFrame implements MouseListener {
 		}
 	}
 	
-
+	private void finished() {
+		if(numCouples == 8) {
+			JOptionPane.showMessageDialog(null, "Enhorabuena has ganado!!", "GANADOR",JOptionPane.INFORMATION_MESSAGE );
+			System.exit(0);
+		}
+	}
 	/** Eventos del Mouse **/
 
 	public void mouseClicked(MouseEvent e) {
@@ -364,11 +350,4 @@ public class DashBoard extends JFrame implements MouseListener {
 	public void mouseEntered(MouseEvent e) {
 
 	}
-	// Inicializa los arrays
-
-		private void loadArray(int[] array) {
-			for (int i = 0; i < array.length; i++) {
-				array[i] = 0;
-			}
-		}
 }
