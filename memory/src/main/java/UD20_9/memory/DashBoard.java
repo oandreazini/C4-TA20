@@ -15,8 +15,6 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import javax.swing.SwingConstants;
 
-
-
 import javax.swing.JButton;
 
 public class DashBoard extends JFrame implements MouseListener {
@@ -41,23 +39,27 @@ public class DashBoard extends JFrame implements MouseListener {
 	private JToggleButton tglbtn15;
 	private JToggleButton tglbtn16;
 	private JButton btnNewGame;
-
 	private JLabel labelNumTry;
 	private JLabel labelTry;
 
 	// Array que contiene el numero que tienen las imagenes
 	int arrayNumImage[] = new int[16];
+
 	// Array que contiene los componentes de los JToogleButton
 	JToggleButton arrayButtonImage[] = new JToggleButton[16];
+
 	// Array que controla que no se repitan mas de 2 veces el mismo numero
 	int arrayControl[] = new int[8];
+
 	// Array que permite llevar el control de las parejas encontradas
 	int arrayCouples[] = new int[16];
+
 	// Array que nos permite contolar el click en cada imagen
 	int arrayClick[] = new int[16];
 
 	// Variable que nos contara los click que tenemos hechos "no superar los 2"
 	int click = 0;
+
 	// Variables para indicar que imagenes se estan mostrando
 	int view1;
 	int view2;
@@ -73,9 +75,7 @@ public class DashBoard extends JFrame implements MouseListener {
 	 */
 	public DashBoard() throws IOException {
 
-		// Se llama a los elementos del memory
-		memoryElements();
-		
+		contentPane = new JPanel();
 
 		setTitle("Memory");
 
@@ -88,79 +88,68 @@ public class DashBoard extends JFrame implements MouseListener {
 		contentPane.setLayout(null);
 
 		setContentPane(contentPane);
-		
+
 		setResizable(false);
 		setLocationRelativeTo(null);
+
+		// Se llama a los elementos del memory
+		memoryElements();
 	}
 
+	/**
+	 * Función que dispone todos los elementos del juego memory
+	 */
 	private void memoryElements() {
 
-		/* Buttons */
+		/* Botones del tablero del 1 al 16 */
 		tglbtn1 = new JToggleButton("");
 		tglbtn1.setBounds(10, 64, 121, 120);
-		tglbtn1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn2 = new JToggleButton("");
 		tglbtn2.setBounds(141, 64, 121, 120);
-		tglbtn2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn3 = new JToggleButton("");
 		tglbtn3.setBounds(272, 64, 121, 120);
-		tglbtn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn4 = new JToggleButton("");
 		tglbtn4.setBounds(403, 64, 121, 120);
-		tglbtn4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn5 = new JToggleButton("");
 		tglbtn5.setBounds(10, 195, 121, 120);
-		tglbtn5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn6 = new JToggleButton("");
 		tglbtn6.setBounds(141, 195, 121, 120);
-		tglbtn6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn7 = new JToggleButton("");
 		tglbtn7.setBounds(272, 195, 121, 120);
-		tglbtn7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn8 = new JToggleButton("");
 		tglbtn8.setBounds(403, 195, 121, 120);
-		tglbtn8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn9 = new JToggleButton("");
 		tglbtn9.setBounds(10, 326, 121, 120);
-		tglbtn9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn10 = new JToggleButton("");
 		tglbtn10.setBounds(141, 326, 121, 120);
-		tglbtn10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn11 = new JToggleButton("");
 		tglbtn11.setBounds(272, 326, 121, 120);
-		tglbtn11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn12 = new JToggleButton("");
 		tglbtn12.setBounds(403, 326, 121, 120);
-		tglbtn12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn13 = new JToggleButton("");
 		tglbtn13.setBounds(10, 457, 121, 120);
-		tglbtn13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn14 = new JToggleButton("");
 		tglbtn14.setBounds(141, 457, 121, 120);
-		tglbtn14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn15 = new JToggleButton("");
 		tglbtn15.setBounds(272, 457, 121, 120);
-		tglbtn15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
 
 		tglbtn16 = new JToggleButton("");
 		tglbtn16.setBounds(403, 457, 121, 120);
-		tglbtn16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quien.jpg")));
-		
-		
+
 		/* Etiquetas */
 		labelTry = new JLabel("Puntos:");
 		labelTry.setFont(new Font("Arial Black", Font.PLAIN, 22));
@@ -171,10 +160,7 @@ public class DashBoard extends JFrame implements MouseListener {
 		labelNumTry.setFont(new Font("Arial Black", Font.PLAIN, 22));
 		labelNumTry.setBounds(437, 25, 87, 24);
 
-		/* Panel */
-
-		contentPane = new JPanel();
-
+		/* Se personaliza el panel y se añaden los elementos al mismo */
 		contentPane.setBackground(new java.awt.Color(255, 204, 0));
 		contentPane.setLayout(null);
 		contentPane.setBounds(0, 0, 500, 465);
@@ -200,9 +186,10 @@ public class DashBoard extends JFrame implements MouseListener {
 
 	}
 
-	// Metodo que permite inicializar el array de JToggleButton y asignarle a cada
-	// uno la imagen inicial de incognita
-
+	/**
+	 * Metodo que permite inicializar el array de JToggleButton y asignarle a cada
+	 * uno la imagen inicial de incognita
+	 */
 	public void initArrayImages() {
 		arrayButtonImage[0] = tglbtn1;
 		arrayButtonImage[1] = tglbtn2;
@@ -227,9 +214,14 @@ public class DashBoard extends JFrame implements MouseListener {
 		}
 	}
 
-	// Permite validar las parejas comparando las posiciones almacenadas al momento
-	// de mostrar las imagenes
-
+	/**
+	 * Permite validar las parejas comparando las posiciones almacenadas al momento
+	 * de mostrar las imagenes
+	 * 
+	 * @param view1
+	 * @param view2
+	 * @param i
+	 */
 	private void okCouples(int view1, int view2, int i) {
 		/*
 		 * valida si el valor en la posicion obtenida al encontrar la imagen 1 es igual
@@ -248,7 +240,7 @@ public class DashBoard extends JFrame implements MouseListener {
 			finished();
 		} else {
 			/*
-			 * si no son iguales entonces se vuelve a poner la imagen de incognita y se
+			 * Si no son iguales entonces se vuelve a poner la imagen de incognita y se
 			 * reinicia el valor de la posicion en el arreglo que cuenta cuantos clic se han
 			 * dado en cada JJToggleButton y se le restan 5 puntos
 			 */
@@ -260,15 +252,23 @@ public class DashBoard extends JFrame implements MouseListener {
 			arrayClick[view2] = 0;
 		}
 	}
-	
+
+	/**
+	 * Mensaje que salta de ganador al tener todas las parejas conseguidas
+	 */
 	private void finished() {
-		if(numCouples == 8) {
-			JOptionPane.showMessageDialog(null, "Enhorabuena has ganado!!", "GANADOR",JOptionPane.INFORMATION_MESSAGE );
+		if (numCouples == 8) {
+			JOptionPane.showMessageDialog(null, "Enhorabuena has ganado!!", "GANADOR", JOptionPane.INFORMATION_MESSAGE);
 			System.exit(0);
 		}
 	}
-	/** Eventos del Mouse **/
 
+	/* Eventos del Mouse */
+
+	/**
+	 * Función que controla si se presiona 2 veces el mismo botón y guarda las
+	 * posiciones de los botones vistos para poder ser comparados luego
+	 */
 	public void mouseClicked(MouseEvent e) {
 		// Bucle que permite recorrer todos los JToggleButton del array y determinar
 		// cuando uno se le ha dado click
@@ -276,8 +276,8 @@ public class DashBoard extends JFrame implements MouseListener {
 
 			/*
 			 * Con esta validacion nos damos cuenta de cual JToggleButton se presiona y
-			 * validamos que si es un JToggleButton que esta descubierto porque su pareja
-			 * fue encontrada, entonces no lo tenga en cuenta para validar mas parejas
+			 * validamos que si es uno que esta descubierto porque su pareja fue encontrada,
+			 * entonces no lo tenga en cuenta para validar mas parejas
 			 */
 
 			if (e.getSource() == arrayButtonImage[i] && verifyMatch(i)) {
@@ -311,9 +311,13 @@ public class DashBoard extends JFrame implements MouseListener {
 		}
 	}
 
-	// El verifyMatch almacena 0 o 1, 0 indica que no hay parejas encontradas para
-	// esa posicion, 1 indica que en esa posicion ya se encuentra una pareja.
-
+	/**
+	 * El verifyMatch almacena 0 o 1, 0 indica que no hay parejas encontradas para
+	 * esa posicion, 1 indica que en esa posicion ya se encuentra una pareja.
+	 * 
+	 * @param i
+	 * @return
+	 */
 	private boolean verifyMatch(int i) {
 		if (arrayCouples[i] != 1) {
 			return true;
@@ -322,6 +326,10 @@ public class DashBoard extends JFrame implements MouseListener {
 		}
 	}
 
+	/**
+	 * Validador de las parejas que se ejecuta despues de tener 2 botones
+	 * descubiertos
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// Cuando se ejecuta este evento se permite realizar la validacion de parejas,
@@ -336,6 +344,9 @@ public class DashBoard extends JFrame implements MouseListener {
 		}
 	}
 
+	
+	/* Métodos necesarios de implementar aunque no realicen ninguna función */
+	
 	@Override
 	public void mousePressed(MouseEvent e) {
 
