@@ -8,14 +8,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 import javax.swing.SwingConstants;
 
-import javax.swing.JButton;
+
 
 public class DashBoard extends JFrame implements MouseListener {
 
@@ -38,7 +36,6 @@ public class DashBoard extends JFrame implements MouseListener {
 	private JToggleButton tglbtn14;
 	private JToggleButton tglbtn15;
 	private JToggleButton tglbtn16;
-	private JButton btnNewGame;
 	private JLabel labelNumTry;
 	private JLabel labelTry;
 
@@ -63,6 +60,8 @@ public class DashBoard extends JFrame implements MouseListener {
 	// Variables para indicar que imagenes se estan mostrando
 	int view1;
 	int view2;
+	
+	// Variable para contar el total de parejas encontradas
 	int numCouples;
 
 	// Variable que nos va a sumar los puntos
@@ -229,7 +228,8 @@ public class DashBoard extends JFrame implements MouseListener {
 		 */
 		if (arrayNumImage[view1] == arrayNumImage[view2]) {
 			// si esto se cumple se suman 10 puntos y se asigna un 1 para determinar que en
-			// esas posiciones ya se encontraron parejas
+			// esas posiciones ya se encontraron parejas, se suma el numero de parejas y se esconde el JJToggleButton
+			// se llama al metodo finished para comprovar si es el final de partida
 			points += 10;
 			labelNumTry.setText(points + "");
 			numCouples++;
